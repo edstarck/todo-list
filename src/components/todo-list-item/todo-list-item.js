@@ -21,27 +21,26 @@ export default class TodoListItem extends Component {
         important: !important,
       }));
     };
+
+    this.setClassName = (
+      { done, important },
+      className = ['todo-list-item']
+    ) => {
+      if (done) {
+        className.push('done');
+      }
+      if (important) {
+        className.push('important');
+      }
+      return className.join(' ');
+    };
   }
 
   render() {
     const { label } = this.props;
-    const { done, important } = this.state;
-    const className = ['todo-list-item'];
-
-    function setClassName(done, important) {
-      if (done) {
-        className.push('done');
-      }
-
-      if (important) {
-        className.push('important');
-      }
-
-      return className.join(' ');
-    }
 
     return (
-      <span className={setClassName(done, important)}>
+      <span className={this.setClassName(this.state)}>
         <span className="todo-list-item-label" onClick={this.onLabelClick}>
           {label}
         </span>
