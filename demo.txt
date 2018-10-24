@@ -5,4 +5,4 @@
   <TodoList /> <-- custom event onDeleted
     <TodoListItem />    <-- onClick button call onDeleted from this.props
     <TodoListItem />
-    ...
+  <AddItem /> <-- onClick call addItem
