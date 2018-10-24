@@ -1,0 +1,8 @@
+<App>                   <-- todoData
+  <AppHeader />
+  <SearchPanel />
+  <ItemStatusFilter />
+  <TodoList /> <-- custom event onDeleted
+    <TodoListItem />    <-- onClick button call onDeleted from this.props
+    <TodoListItem />
+    ...
