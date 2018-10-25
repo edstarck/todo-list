@@ -2,52 +2,38 @@ import React, { Component } from 'react';
 import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
-  constructor() {
-    super();
+  render() {
+    const {
+      label,
+      onDeleted,
+      onToggleImportant,
+      onToggleDone,
+      important,
+      done,
+    } = this.props;
 
-    this.state = {
-      done: false,
-      important: false,
-    };
+    const setClassName = (action, status) => {
+      let className = ['todo-list-item'];
 
-    this.onLabelClick = () => {
-      this.setState(({ done }) => ({
-        done: !done,
-      }));
-    };
-
-    this.onMarkImportant = () => {
-      this.setState(({ important }) => ({
-        important: !important,
-      }));
-    };
-
-    this.setClassName = (
-      { done, important },
-      className = ['todo-list-item']
-    ) => {
-      if (done) {
+      if (action) {
         className.push('done');
       }
-      if (important) {
+      if (status) {
         className.push('important');
       }
+
       return className.join(' ');
     };
-  }
-
-  render() {
-    const { label, onDeleted } = this.props;
 
     return (
-      <span className={this.setClassName(this.state)}>
-        <span className="todo-list-item-label" onClick={this.onLabelClick}>
+      <span className={setClassName(done, important)}>
+        <span className="todo-list-item-label" onClick={onToggleDone}>
           {label}
         </span>
         <button
           type="button"
           className="btn btn-outline-success btn-sm float-right"
-          onClick={this.onMarkImportant}
+          onClick={onToggleImportant}
         >
           <i className="fa fa-exclamation" />
         </button>

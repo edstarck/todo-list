@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './item-add-form.css';
 
-const AddItem = ({ onItemAdded }) => {
-  return (
-    <section className="bottom-panel d-flex">
-      <button
-        className="btn btn-outline-secondary"
-        onClick={() => onItemAdded('Hello world')}
-      >
-        add item
-      </button>
-    </section>
-  );
-};
+export default class AddItem extends Component {
+  changeValue = e => {
+    console.log(e.target.value);
+  };
 
-export default AddItem;
+  submitForm = e => {
+    e.preventDefault();
+    this.props.onItemAdded('Hello world');
+  };
+
+  render() {
+    return (
+      <form
+        className="bottom-panel todo-app-form d-flex"
+        onSubmit={this.submitForm}
+      >
+        <input
+          type="text"
+          className="form-control"
+          placeholder="What need to be done"
+          onChange={this.changeValue}
+        />
+        <button className="btn btn-outline-secondary">add item</button>
+      </form>
+    );
+  }
+}
