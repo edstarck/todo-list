@@ -1,8 +1,8 @@
-<App>                   <-- todoData
+<App>                   <-- todoData compare value from <SearchPanel />
   <AppHeader />
-  <SearchPanel />
+  <SearchPanel /> <-- get value runtime and up to <App>
   <ItemStatusFilter />
-  <TodoList /> <-- custom event onDeleted
-    <TodoListItem />    <-- onClick button call onDeleted from this.props
+  <TodoList />
     <TodoListItem />
-  <AddItem /> <-- onClick call addItem
+    <TodoListItem />
+  <AddItem />
